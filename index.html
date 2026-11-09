@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Convite 365 Sorrisos — Tyler Miguel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --sky:#d9eef9; --blue:#6fb9e0; --deep:#3f7fa6; --teal:#3bb3c4; --teal2:#2a97a9;
+  --sun:#ffc857; --orange:#f4a04a; --green:#9bc99a;
+  --ink:#33566b; --mute:#6c8797; --cream:#fffdf7; --line:rgba(63,127,166,.2);
+}
+*{box-sizing:border-box;margin:0}
+html,body{height:100%}
+body{font-family:'Nunito',system-ui,sans-serif;color:var(--ink);line-height:1.5;-webkit-font-smoothing:antialiased;
+  background:linear-gradient(180deg,#d4ebf8 0%,#eef7fc 50%,#fff4de 100%);overflow-x:hidden}
+h1,h2,h3,.fred{font-family:'Fredoka',sans-serif}
+
+/* palco */
+.stage{min-height:100dvh;display:grid;place-items:center;padding:max(12px,env(safe-area-inset-top)) 12px max(12px,env(safe-area-inset-bottom))}
+.phone{position:relative;width:min(440px,100%);min-height:min(820px,calc(100dvh - 24px));background:var(--cream);border-radius:32px;overflow:hidden;
+  box-shadow:0 30px 70px -30px rgba(63,127,166,.6),0 0 0 6px #fff;isolation:isolate}
+.deco{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.deco svg{position:absolute}
+.cloudA{top:-8px;left:-16px;width:150px}.cloudB{top:-6px;right:-20px;width:170px}
+.bal{right:8px;top:36%;width:64px}.kite{left:6px;top:30%;width:44px;animation:bob 4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(4deg)}}
+.tri{width:16px}
+
+/* telas */
+.view{display:none;padding:34px 22px 28px;min-height:inherit;flex-direction:column;align-items:center;text-align:center}
+.view.on{display:flex;animation:in .45s cubic-bezier(.2,.8,.2,1)}
+.view.back.on{animation-name:inBack}
+@keyframes in{from{opacity:0;transform:translateX(34px) scale(.98)}to{opacity:1;transform:none}}
+@keyframes inBack{from{opacity:0;transform:translateX(-34px) scale(.98)}to{opacity:1;transform:none}}
+
+/* home */
+.view{position:relative}
+.view>*{position:relative;z-index:1}
+.arc{width:min(400px,104%);margin-top:0;overflow:visible}
+.rainbow{position:absolute!important;z-index:0!important;left:50%;top:92px;transform:translateX(-50%);width:min(380px,104%);pointer-events:none}
+.sun{width:min(190px,50vw);margin:-34px auto 0}
+.view{padding-bottom:120px}
+.train{animation:roll 20s linear infinite}
+@keyframes roll{from{transform:translateX(-310px)}to{transform:translateX(460px)}}
+.puff{animation:puff 1.4s ease-out infinite}
+@keyframes puff{from{opacity:1;transform:translate(0,0)}to{opacity:0;transform:translate(-8px,-16px)}}
+.fl{animation:bob 5s ease-in-out infinite}.fl2{animation:bob 6.5s ease-in-out infinite reverse}
+.drift{animation:drift 14s ease-in-out infinite alternate}
+@keyframes drift{to{transform:translateX(22px)}}
+.rays{transform-origin:100px 100px;animation:spin 50s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.name{font:700 clamp(2.2rem,11vw,3rem)/1.02 'Fredoka';margin-top:6px;letter-spacing:.01em}
+.name span{display:inline-block;animation:wave 3.2s ease-in-out infinite}
+@keyframes wave{50%{transform:translateY(-4px)}}
+.guest{font-weight:700;color:var(--deep);min-height:1.4em;margin-top:6px;font-size:.95rem}
+.tag{margin-top:6px;font:500 1.02rem/1.25 'Fredoka';color:var(--orange);text-transform:uppercase;letter-spacing:.02em;max-width:26ch}
+.when{display:flex;align-items:center;gap:12px;margin-top:14px}
+.when b{font:700 clamp(1.6rem,8vw,2.1rem) 'Fredoka';color:var(--sun);text-shadow:0 2px 0 rgba(244,160,74,.35)}
+.when svg{width:30px}
+.local{margin-top:8px;font:600 .98rem 'Fredoka';color:var(--orange);text-transform:uppercase;letter-spacing:.03em}
+.local span{color:var(--deep)}
+.count{display:flex;gap:8px;margin-top:12px;font-size:.8rem;color:var(--mute);font-weight:700}
+.count i{font-style:normal;background:#fff;border:1.5px solid var(--line);border-radius:12px;padding:4px 9px;color:var(--deep)}
+
+.menu{display:flex;gap:14px;justify-content:center;margin-top:20px;flex-wrap:wrap}
+.opt{width:86px;display:flex;flex-direction:column;align-items:center;gap:7px;border:0;background:none;cursor:pointer;font:700 .7rem/1.1 'Fredoka';color:var(--teal2);text-transform:uppercase;letter-spacing:.04em}
+.opt .c{width:70px;height:70px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#6fd3e0,var(--teal));
+  box-shadow:0 8px 0 -2px var(--teal2),0 14px 18px -8px rgba(42,151,169,.7);transition:transform .15s,box-shadow .15s;border:3px solid #fff;outline:2px solid #9fdde6}
+.opt:hover .c{transform:translateY(-3px)}
+.opt:active .c{transform:translateY(3px);box-shadow:0 3px 0 -2px var(--teal2)}
+.opt:focus-visible{outline:3px solid var(--orange);outline-offset:4px;border-radius:14px}
+.opt svg{width:34px;height:34px}
+.hint{margin-top:16px;font:500 1.1rem 'Fredoka';color:var(--sun);animation:pulse 1.8s ease-in-out infinite}
+@keyframes pulse{50%{transform:scale(1.06);opacity:.8}}
+
+/* telas internas */
+.top{width:100%;display:flex;align-items:center;gap:10px;margin-bottom:14px}
+.back{border:0;background:#fff;border-radius:999px;padding:9px 16px;font:600 .95rem 'Fredoka';color:var(--deep);cursor:pointer;box-shadow:0 0 0 1.5px var(--line);min-height:42px}
+.back:focus-visible,.btn:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.view h2{font-size:1.6rem;color:var(--deep);font-weight:600}
+.badge{width:68px;height:68px;border-radius:50%;display:grid;place-items:center;background:radial-gradient(circle at 35% 30%,#6fd3e0,var(--teal));border:3px solid #fff;outline:2px solid #9fdde6;margin:4px auto 8px}
+.badge svg{width:34px}
+.card{width:100%;text-align:left;background:#fff;border-radius:22px;padding:18px;border:1.5px solid var(--line);margin-top:12px}
+.note{font-size:.84rem;color:var(--mute);margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:12px 20px;border-radius:999px;border:0;background:#fff;color:var(--deep);
+  font:600 1rem 'Fredoka';cursor:pointer;text-decoration:none;min-height:48px;box-shadow:0 0 0 1.5px var(--line),0 5px 0 -1px rgba(63,127,166,.2);transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:linear-gradient(180deg,#ffb95e,var(--orange));color:#fff;box-shadow:0 5px 0 -1px #d4832e;text-shadow:0 1px 0 rgba(0,0,0,.15)}
+.btn.wa{background:#2fb765;color:#fff;box-shadow:0 5px 0 -1px #1f8a4a}
+.row{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:14px;width:100%}
+
+.map{position:relative;height:170px;border-radius:18px;overflow:hidden;border:2px solid #fff;box-shadow:0 0 0 1.5px var(--line);width:100%;margin-top:10px;background:#e9f5e4}
+.map svg{width:100%;height:100%;display:block}
+.mpin{position:absolute;left:52%;top:44%;transform:translate(-50%,-100%);font-size:2.2rem;animation:hop 1.6s ease-in-out infinite}
+@keyframes hop{50%{transform:translate(-50%,-120%)}}
+.addr strong{font:600 1.1rem 'Fredoka'}.addr small{display:block;color:var(--mute)}
+
+.gifts{display:grid;grid-template-columns:1fr 1fr;gap:10px;width:100%;margin-top:10px}
+.gift{background:#fff;border-radius:18px;padding:14px 10px;border:1.5px solid var(--line);text-align:center}
+.gift .e{font-size:1.9rem}.gift h3{font-size:.98rem;color:var(--deep);margin:2px 0}.gift p{font-size:.78rem;color:var(--mute);line-height:1.3}
+.gift a{display:inline-block;margin-top:4px;color:var(--deep);font-weight:700;font-size:.8rem}
+.gift:last-child:nth-child(odd){grid-column:1/-1}
+
+label{display:block;font-weight:700;font-size:.86rem;margin:12px 0 6px;color:var(--deep)}
+input[type=text],textarea{width:100%;padding:12px 14px;border-radius:16px;border:2px solid var(--line);background:#fff;color:var(--ink);font:inherit;font-size:1rem}
+textarea{min-height:70px;resize:vertical}
+.choice{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.choice input{position:absolute;opacity:0;pointer-events:none}
+.choice label{margin:0;text-align:center;padding:13px 8px;border-radius:18px;background:#fff;border:2px solid var(--line);cursor:pointer;font:600 1rem 'Fredoka';color:var(--ink);transition:.2s}
+.choice input:checked+label{background:linear-gradient(180deg,#ffd27f,var(--sun));border-color:#f0b035}
+.choice input:focus-visible+label{outline:3px solid var(--orange);outline-offset:2px}
+.consent{display:flex;gap:10px;align-items:flex-start;font-weight:400;font-size:.8rem;color:var(--mute);margin-top:14px}
+.consent input{margin-top:3px;width:18px;height:18px;accent-color:var(--orange);flex:none}
+details{margin-top:8px;font-size:.8rem;color:var(--mute)}summary{cursor:pointer;color:var(--deep);font-weight:700}details p{margin-top:6px}
+.err{color:#c4453b;font-weight:700;font-size:.86rem;margin-top:8px;min-height:1.1em}
+.ok .big{font-size:3.4rem}
+
+.mini{display:flex;gap:6px;justify-content:center;margin-top:auto;padding-top:20px;width:100%}
+.mini button{flex:1;border:0;background:#fff;border-radius:16px;padding:9px 4px;font:600 .72rem 'Fredoka';color:var(--teal2);cursor:pointer;box-shadow:0 0 0 1.5px var(--line);min-height:44px}
+.mini button[aria-current=true]{background:var(--teal);color:#fff}
+.mini button:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.foot{font-size:.68rem;color:var(--mute);margin-top:12px}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="stage">
+<div class="phone" id="phone">
+  <div class="deco" aria-hidden="true">
+    <svg class="cloudA" viewBox="0 0 150 70"><g fill="#cfe9f6"><ellipse cx="50" cy="36" rx="46" ry="26"/><ellipse cx="95" cy="30" rx="40" ry="28"/><ellipse cx="120" cy="44" rx="30" ry="18"/></g></svg>
+    <svg class="cloudB" viewBox="0 0 170 80"><g fill="#cfe9f6"><ellipse cx="60" cy="40" rx="52" ry="28"/><ellipse cx="110" cy="34" rx="46" ry="30"/><ellipse cx="140" cy="48" rx="30" ry="20"/></g></svg>
+    <svg class="bal fl" viewBox="0 0 64 100"><ellipse cx="22" cy="26" rx="18" ry="22" fill="#f8b878"/><ellipse cx="44" cy="40" rx="16" ry="20" fill="#9ed3ee"/><path d="M22 48 Q30 70 40 92M44 60 Q42 76 40 92" stroke="#b9c9d3" fill="none" stroke-width="1.5"/></svg>
+    <svg class="kite" viewBox="0 0 44 60"><polygon points="22,0 44,22 22,50 0,22" fill="#9ed3ee"/><polygon points="22,0 44,22 22,22" fill="#f4a04a"/><path d="M22 50 Q10 56 14 60" stroke="#b9c9d3" fill="none" stroke-width="2"/></svg>
+    <!-- mais nuvens -->
+    <svg class="drift" style="left:-30px;top:23%;width:110px" viewBox="0 0 120 50"><g fill="#e3f2fb"><ellipse cx="40" cy="32" rx="34" ry="16"/><ellipse cx="72" cy="26" rx="30" ry="18"/><ellipse cx="92" cy="34" rx="22" ry="12"/></g></svg>
+    <svg class="drift" style="right:-26px;top:58%;width:120px;animation-direction:alternate-reverse" viewBox="0 0 120 50"><g fill="#e3f2fb"><ellipse cx="40" cy="32" rx="34" ry="16"/><ellipse cx="72" cy="26" rx="30" ry="18"/><ellipse cx="92" cy="34" rx="22" ry="12"/></g></svg>
+    <!-- mais balões -->
+    <svg class="fl2" style="left:4px;top:62%;width:70px" viewBox="0 0 70 110"><ellipse cx="22" cy="24" rx="17" ry="21" fill="#9ed3ee"/><ellipse cx="46" cy="34" rx="16" ry="20" fill="#ffd27f"/><ellipse cx="30" cy="48" rx="15" ry="19" fill="#f8a8a0"/><path d="M22 45 Q34 78 38 104M46 54 Q42 80 38 104M30 67 Q34 86 38 104" stroke="#b9c9d3" fill="none" stroke-width="1.5"/></svg>
+    <svg class="fl" style="right:6px;top:14%;width:52px;animation-delay:-2s" viewBox="0 0 52 90"><ellipse cx="26" cy="24" rx="19" ry="23" fill="#9bc99a"/><path d="M26 47 Q30 68 26 86" stroke="#b9c9d3" fill="none" stroke-width="1.5"/></svg>
+    <svg class="fl2" style="left:42%;top:84%;width:40px" viewBox="0 0 52 90"><ellipse cx="26" cy="24" rx="19" ry="23" fill="#f8b878"/><path d="M26 47 Q22 68 26 86" stroke="#b9c9d3" fill="none" stroke-width="1.5"/></svg>
+    <!-- mais pipas -->
+    <svg class="fl" style="right:10px;top:46%;width:46px;animation-delay:-1s" viewBox="0 0 44 70"><polygon points="22,0 44,22 22,50 0,22" fill="#f8b878"/><polygon points="22,0 44,22 22,22" fill="#9ed3ee"/><path d="M22 50 Q8 58 16 70" stroke="#b9c9d3" fill="none" stroke-width="2"/><circle cx="14" cy="60" r="3" fill="#9ed3ee"/></svg>
+    <svg class="fl2" style="left:10px;top:78%;width:42px" viewBox="0 0 44 70"><polygon points="22,0 44,22 22,50 0,22" fill="#ffd27f"/><polygon points="22,0 44,22 22,22" fill="#9bc99a"/><path d="M22 50 Q34 58 26 70" stroke="#b9c9d3" fill="none" stroke-width="2"/></svg>
+    <!-- grama -->
+    <svg style="left:0;bottom:0;width:100%;height:96px" viewBox="0 0 440 96" preserveAspectRatio="none">
+      <path d="M0 40 C70 14 140 52 220 30 S370 12 440 36 V96 H0Z" fill="#b5dca9"/>
+      <path d="M0 62 C90 38 180 78 270 54 S400 44 440 58 V96 H0Z" fill="#9bcf8f"/>
+      <path d="M0 80 C100 66 200 92 300 76 S400 70 440 78 V96 H0Z" fill="#7fbf74"/>
+    </svg>
+    <svg style="left:0;bottom:0;width:100%;height:96px" viewBox="0 0 440 96" preserveAspectRatio="none">
+      <g stroke="#6aae62" stroke-width="2" stroke-linecap="round" fill="none"><path d="M30 92 l-4-12M34 92 l1-14M38 92 l5-11"/><path d="M150 90 l-4-12M154 90 l1-14M158 90 l5-11"/><path d="M300 92 l-4-12M304 92 l1-14M308 92 l5-11"/><path d="M400 90 l-4-12M404 90 l1-14M408 90 l5-11"/></g>
+      <circle cx="90" cy="78" r="3.5" fill="#fff"/><circle cx="90" cy="78" r="1.4" fill="#ffc857"/>
+      <circle cx="210" cy="86" r="3.5" fill="#fff"/><circle cx="210" cy="86" r="1.4" fill="#ffc857"/>
+      <circle cx="350" cy="80" r="3.5" fill="#f8a8a0"/><circle cx="350" cy="80" r="1.4" fill="#ffc857"/>
+      <circle cx="420" cy="88" r="3.5" fill="#fff"/><circle cx="420" cy="88" r="1.4" fill="#ffc857"/>
+    </svg>
+    <!-- trenzinho -->
+    <svg class="train" style="left:0;bottom:14px;width:300px" viewBox="0 0 300 90">
+      <g class="puff"><circle cx="44" cy="10" r="5" fill="#fff" opacity=".9"/><circle cx="52" cy="2" r="4" fill="#fff" opacity=".7"/></g>
+      <rect x="10" y="64" width="282" height="4" rx="2" fill="#b98b5a"/>
+      <!-- locomotiva -->
+      <rect x="40" y="18" width="14" height="18" rx="3" fill="#3f7fa6"/><rect x="36" y="14" width="22" height="6" rx="3" fill="#2f6a8e"/>
+      <rect x="14" y="32" width="46" height="30" rx="14" fill="#ffc857"/>
+      <rect x="54" y="26" width="30" height="36" rx="5" fill="#6fb9e0"/><rect x="50" y="22" width="38" height="6" rx="3" fill="#3f7fa6"/>
+      <rect x="60" y="32" width="18" height="14" rx="3" fill="#e9f6fc"/>
+      <rect x="10" y="56" width="78" height="8" rx="3" fill="#f4a04a"/>
+      <!-- vagões -->
+      <g><rect x="96" y="30" width="56" height="32" rx="6" fill="#9bc99a"/><rect x="92" y="26" width="64" height="7" rx="3" fill="#6fa974"/><rect x="102" y="36" width="14" height="12" rx="3" fill="#e9f6fc"/><rect x="124" y="36" width="14" height="12" rx="3" fill="#e9f6fc"/><rect x="94" y="56" width="60" height="8" rx="3" fill="#6fa974"/></g>
+      <g><rect x="162" y="30" width="56" height="32" rx="6" fill="#f8b878"/><rect x="158" y="26" width="64" height="7" rx="3" fill="#e8913f"/><rect x="168" y="36" width="14" height="12" rx="3" fill="#e9f6fc"/><rect x="190" y="36" width="14" height="12" rx="3" fill="#e9f6fc"/><rect x="160" y="56" width="60" height="8" rx="3" fill="#e8913f"/></g>
+      <g><rect x="228" y="30" width="56" height="32" rx="6" fill="#9ed3ee"/><rect x="224" y="26" width="64" height="7" rx="3" fill="#6fb9e0"/><rect x="234" y="36" width="14" height="12" rx="3" fill="#e9f6fc"/><rect x="256" y="36" width="14" height="12" rx="3" fill="#e9f6fc"/><rect x="226" y="56" width="60" height="8" rx="3" fill="#6fb9e0"/></g>
+      <path d="M88 52h8M154 52h8M220 52h8" stroke="#8a6b4a" stroke-width="3"/>
+      <!-- rodas -->
+      <g fill="#fff" stroke="#c9733a" stroke-width="3"><circle class="wheel" cx="30" cy="68" r="9"/><circle class="wheel" cx="70" cy="68" r="9"/><circle class="wheel" cx="116" cy="68" r="7"/><circle class="wheel" cx="136" cy="68" r="7"/><circle class="wheel" cx="182" cy="68" r="7"/><circle class="wheel" cx="202" cy="68" r="7"/><circle class="wheel" cx="248" cy="68" r="7"/><circle class="wheel" cx="268" cy="68" r="7"/></g>
+      <g stroke="#c9733a" stroke-width="2"><path d="M30 60v16M22 68h16M70 60v16M62 68h16"/></g>
+    </svg>
+    <!-- estrelinhas -->
+    <svg style="left:22%;top:18%;width:14px" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="#ffd27f"/></svg>
+    <svg style="right:22%;top:40%;width:12px" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="#9ed3ee"/></svg>
+    <svg class="tri" style="left:14%;top:52%" viewBox="0 0 16 16"><polygon points="0,16 8,0 16,16" fill="#9bc99a" opacity=".6"/></svg>
+    <svg class="tri" style="right:12%;top:72%" viewBox="0 0 16 16"><polygon points="0,16 8,0 16,16" fill="#f4a04a" opacity=".5"/></svg>
+  </div>
+
+  <!-- HOME -->
+  <section class="view on" id="v-home" aria-labelledby="t-home">
+    <svg class="arc" viewBox="0 0 300 80" role="img" aria-label="365 sorrisos do">
+      <defs><path id="curve" d="M14 70 Q150 -6 286 70"/></defs>
+      <text font-family="Fredoka" font-weight="700" font-size="34" text-anchor="middle" fill="#8fa9b8">
+        <textPath href="#curve" startOffset="50%"><tspan fill="#6fb9e0">3</tspan><tspan fill="#f4a04a">6</tspan><tspan fill="#9bc99a">5</tspan><tspan> sorrisos do</tspan></textPath>
+      </text>
+    </svg>
+    <svg class="rainbow" viewBox="0 0 380 190" aria-hidden="true" fill="none" stroke-width="14" stroke-linecap="round">
+      <path d="M20 186 A170 170 0 0 1 360 186" stroke="#f8a8a0" opacity=".75"/>
+      <path d="M36 186 A154 154 0 0 1 344 186" stroke="#ffc88a" opacity=".8"/>
+      <path d="M52 186 A138 138 0 0 1 328 186" stroke="#ffe08a" opacity=".85"/>
+      <path d="M68 186 A122 122 0 0 1 312 186" stroke="#b9dfb0" opacity=".85"/>
+      <path d="M84 186 A106 106 0 0 1 296 186" stroke="#a6d6ef" opacity=".9"/>
+    </svg>
+    <svg class="sun" viewBox="0 0 200 200" aria-hidden="true">
+      <g class="rays" fill="#ffd27f">
+        <path id="ray" d="M100 4 L113 40 L87 40Z"/>
+        <use href="#ray" transform="rotate(30 100 100)"/><use href="#ray" transform="rotate(60 100 100)"/><use href="#ray" transform="rotate(90 100 100)"/>
+        <use href="#ray" transform="rotate(120 100 100)"/><use href="#ray" transform="rotate(150 100 100)"/><use href="#ray" transform="rotate(180 100 100)"/>
+        <use href="#ray" transform="rotate(210 100 100)"/><use href="#ray" transform="rotate(240 100 100)"/><use href="#ray" transform="rotate(270 100 100)"/>
+        <use href="#ray" transform="rotate(300 100 100)"/><use href="#ray" transform="rotate(330 100 100)"/>
+      </g>
+      <circle cx="100" cy="100" r="58" fill="#ffc857"/><circle cx="100" cy="100" r="58" fill="none" stroke="#f4a04a" stroke-width="4" opacity=".5"/>
+      <path d="M74 94 Q82 84 90 94" fill="none" stroke="#9a5a1e" stroke-width="4" stroke-linecap="round"/>
+      <path d="M110 94 Q118 84 126 94" fill="none" stroke="#9a5a1e" stroke-width="4" stroke-linecap="round"/>
+      <ellipse cx="72" cy="108" rx="9" ry="6" fill="#ff9a8b" opacity=".7"/><ellipse cx="128" cy="108" rx="9" ry="6" fill="#ff9a8b" opacity=".7"/>
+      <path d="M86 112 Q100 128 114 112" fill="none" stroke="#9a5a1e" stroke-width="4" stroke-linecap="round"/>
+    </svg>
+    <h1 class="name" id="t-home"></h1>
+    <p class="tag" id="tagline"></p>
+    <div class="when">
+      <b id="hData"></b>
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.3 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z" fill="#6fb9e0"/></svg>
+      <b id="hHora"></b>
+    </div>
+    <div class="local">Local: <span id="hLocal"></span></div>
+    <div class="count" role="timer" aria-label="Contagem regressiva"><i id="cd"></i><i id="ch"></i><i id="cm"></i></div>
+
+    <nav class="menu" aria-label="Menu do convite">
+      <button class="opt" data-go="confirmar"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9-9.3C1.6 8 4 5 7 5c2 0 3.5 1.2 5 3 1.5-1.8 3-3 5-3 3 0 5.4 3 4 6.7-2 4.7-9 9.3-9 9.3z" fill="rgba(255,255,255,.25)"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></span>Confirmar presença</button>
+      <button class="opt" data-go="local"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z" fill="rgba(255,255,255,.25)"/><circle cx="12" cy="10" r="2.6"/></svg></span>Acessar localização</button>
+      <button class="opt" data-go="presentes"><span class="c"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2" fill="rgba(255,255,255,.25)"/><path d="M12 9v12M3 13h18"/><path d="M12 9S9 8 8.5 6.2 10 3 12 5.5c2-2.5 3.5-1.2 3.5.7S12 9 12 9z"/></svg></span>Sugestões de presentes</button>
+    </nav>
+    <div class="hint">Clique para interagir</div>
+  </section>
+
+  <!-- LOCALIZAÇÃO -->
+  <section class="view" id="v-local" aria-labelledby="t-local" hidden>
+    <div class="top"><button class="back" data-go="home">← Voltar</button></div>
+    <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg></div>
+    <h2 id="t-local" tabindex="-1">Como chegar</h2>
+    <div class="map" aria-hidden="true">
+      <svg viewBox="0 0 400 170" preserveAspectRatio="xMidYMid slice"><rect width="400" height="170" fill="#e9f5e4"/>
+        <path d="M0 125 C90 95 150 145 240 105 S360 75 400 95 V170 H0Z" fill="#cfe8c6"/>
+        <path d="M-10 50 C80 80 140 20 230 50 S340 80 420 30" stroke="#fff" stroke-width="16" fill="none"/>
+        <path d="M70 -10 C100 50 90 110 130 180" stroke="#fff" stroke-width="12" fill="none"/>
+        <circle cx="320" cy="125" r="20" fill="#bfe0f3"/><circle cx="46" cy="135" r="13" fill="#9bc99a"/></svg>
+      <div class="mpin">📍</div>
+    </div>
+    <div class="card addr"><strong id="lNome"></strong><small id="lEnd"></small>
+      <p class="note" id="lData"></p><p class="note" id="lObs" style="margin-top:4px"></p></div>
+    <div class="row">
+      <a class="btn primary" id="gmaps" target="_blank" rel="noopener noreferrer">Google Maps</a>
+      <a class="btn" id="waze" target="_blank" rel="noopener noreferrer">Waze</a>
+      <a class="btn" id="apple" target="_blank" rel="noopener noreferrer">Apple Maps</a>
+      <a class="btn" id="gcal" target="_blank" rel="noopener noreferrer">📅 Salvar na agenda</a>
+    </div>
+    <div class="mini" data-mini="local"></div>
+  </section>
+
+  <!-- PRESENTES -->
+  <section class="view" id="v-presentes" aria-labelledby="t-presentes" hidden>
+    <div class="top"><button class="back" data-go="home">← Voltar</button></div>
+    <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M12 9v12M3 13h18"/><path d="M12 9S9 8 8.5 6.2 10 3 12 5.5c2-2.5 3.5-1.2 3.5.7S12 9 12 9z"/></svg></div>
+    <h2 id="t-presentes" tabindex="-1">Sugestões de presentes</h2>
+    <p class="note">Só ideias para ajudar. Sua presença já é o melhor presente, e nenhuma compra é obrigatória.</p>
+    <div class="gifts" id="giftList"></div>
+    <div class="mini" data-mini="presentes"></div>
+  </section>
+
+  <!-- CONFIRMAR -->
+  <section class="view" id="v-confirmar" aria-labelledby="t-confirmar" hidden>
+    <div class="top"><button class="back" data-go="home">← Voltar</button></div>
+    <div class="badge"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-4.6-9-9.3C1.6 8 4 5 7 5c2 0 3.5 1.2 5 3 1.5-1.8 3-3 5-3 3 0 5.4 3 4 6.7-2 4.7-9 9.3-9 9.3z"/><path d="M8.5 12.5l2.5 2.5 4.5-5"/></svg></div>
+    <h2 id="t-confirmar" tabindex="-1">Confirmar presença</h2>
+    <div class="card" id="linkCard" hidden style="text-align:center">
+      <div class="big" style="font-size:3rem">📝</div>
+      <p class="note" style="margin:6px 0 4px">Toque no botão e responda rapidinho. Convite individual: uma confirmação por pessoa.</p>
+      <div class="row"><a class="btn primary" id="formLink" target="_blank" rel="noopener noreferrer">Responder confirmação</a></div>
+    </div>
+    <div class="card" id="formCard">
+      <p class="note" style="margin:0 0 4px">Convite individual: uma confirmação por pessoa.</p>
+      <form id="form" novalidate>
+        <label for="nome">Seu nome</label>
+        <input type="text" id="nome" autocomplete="name" maxlength="80" required>
+        <label id="lblResp">Você vai?</label>
+        <div class="choice" role="radiogroup" aria-labelledby="lblResp">
+          <input type="radio" name="resp" id="rSim" value="sim"><label for="rSim">🎉 Vou!</label>
+          <input type="radio" name="resp" id="rNao" value="nao"><label for="rNao">😢 Não posso</label>
+        </div>
+        <div class="err" id="err" role="alert"></div>
+        <div class="row"><button class="btn primary" type="submit" id="send">Enviar confirmação</button></div>
+      </form>
+    </div>
+    <div class="card ok hidden" id="done" style="text-align:center" aria-live="polite" hidden>
+      <div class="big" id="doneEmoji">🌞</div>
+      <h2 id="doneTitle" style="margin-top:4px"></h2>
+      <p class="note" id="doneText"></p>
+      <div class="row">
+        <a class="btn wa" id="waBtn" target="_blank" rel="noopener noreferrer">Avisar no WhatsApp</a>
+        <button class="btn" id="edit" type="button">Alterar resposta</button>
+      </div>
+    </div>
+    <div class="mini" data-mini="confirmar"></div>
+  </section>
+</div>
+</div>
+
+<script>
+/* ============ CONFIGURAÇÃO — edite aqui ============ */
+const EVENT = {
+  nome: "Tyler Miguel",
+  titulo: "1 aninho do Tyler Miguel",
+  tagline: "Um ano se passou… vamos comemorar os 365 dias de muitos sorrisos do nosso pequeno!",
+  data: "2026-11-20T19:00:00-03:00",
+  duracaoHoras: 4,
+  local: "Casa da Titia Cheila",
+  endereco: "Rua Jerônimo Costa Filho, 422 — Forquilha, CE",
+  whatsapp: "5511999999999",
+  formBase: "https://docs.google.com/forms/d/e/1FAIpQLSe0NZI3tiG-aYvPxaTB3DJng0Ba_LIz8FbQRU8BEy7xUVW_8A/viewform",
+  formEntryNome: "entry.1274269868",
+  formEntryResp: "entry.1347636565",
+  formUrl: "",   // cole aqui o link do Google Forms (se vazio, usa o formulário interno)
+  obs: "",
+  presentes: [
+    { emoji:"👕", nome:"Roupa", desc:"Tamanho 1/2 anos" },
+    { emoji:"🧩", nome:"Brinquedo educativo", desc:"Para aprender brincando" },
+    { emoji:"👟", nome:"Sapato / sandália", desc:"Nº 19 ou 20" },
+    { emoji:"🌸", nome:"Perfuminhos", desc:"Cheirinho de bebê" },
+    { emoji:"🌙", nome:"Pijama", desc:"Para noites confortáveis" }
+  ]
+};
+/* ===================================================== */
+const $ = id => document.getElementById(id);
+const dt = new Date(EVENT.data);
+const tz = {timeZone:'America/Sao_Paulo'};
+const dd = new Intl.DateTimeFormat('pt-BR',{day:'2-digit',month:'2-digit',...tz});
+const fmtLonga = new Intl.DateTimeFormat('pt-BR',{weekday:'long',day:'numeric',month:'long',year:'numeric',...tz});
+const fmtHora = new Intl.DateTimeFormat('pt-BR',{hour:'2-digit',minute:'2-digit',...tz});
+
+document.title = "Convite — " + EVENT.titulo;
+const cols=['#6fb9e0','#9bc99a','#f4a04a','#ffc857'];
+[...EVENT.nome].forEach((ch,i)=>{const s=document.createElement('span');s.textContent=ch===' '?' ':ch;s.style.color=cols[i%4];s.style.animationDelay=(i*.12)+'s';$('t-home').append(s);});
+$('t-home').setAttribute('aria-label',EVENT.nome);
+$('tagline').textContent = EVENT.tagline;
+$('hData').textContent = dd.format(dt).replace('/','.');
+$('hHora').textContent = fmtHora.format(dt).replace(':','h');
+$('hLocal').textContent = EVENT.local;
+$('lNome').textContent = EVENT.local; $('lEnd').textContent = EVENT.endereco;
+$('lData').textContent = "📅 " + fmtLonga.format(dt) + ", às " + fmtHora.format(dt);
+$('lObs').textContent = EVENT.obs;
+
+const q = encodeURIComponent(EVENT.endereco);
+$('gmaps').href="https://www.google.com/maps/search/?api=1&query="+q;
+$('waze').href="https://waze.com/ul?q="+q+"&navigate=yes";
+$('apple').href="https://maps.apple.com/?q="+q;
+const iso=d=>d.toISOString().replace(/[-:]/g,'').replace(/\.\d{3}/,'');
+$('gcal').href="https://calendar.google.com/calendar/render?action=TEMPLATE&text="+encodeURIComponent(EVENT.titulo)+"&dates="+iso(dt)+"/"+iso(new Date(dt.getTime()+EVENT.duracaoHoras*3600e3))+"&location="+q;
+
+EVENT.presentes.forEach(g=>{
+  const d=document.createElement('div');d.className='gift';
+  const e=document.createElement('div');e.className='e';e.textContent=g.emoji;
+  const h=document.createElement('h3');h.textContent=g.nome;
+  const p=document.createElement('p');p.textContent=g.desc;
+  d.append(e,h,p);
+  if(g.link){const a=document.createElement('a');a.href=g.link;a.target='_blank';a.rel='noopener noreferrer';a.textContent='Ver ideia →';d.append(a);}
+  $('giftList').append(d);
+});
+
+function tick(){
+  let s=Math.max(0,Math.floor((dt-Date.now())/1000));
+  const d=Math.floor(s/86400);s%=86400;const h=Math.floor(s/3600);s%=3600;const m=Math.floor(s/60);
+  $('cd').textContent=d+" dias";$('ch').textContent=h+" h";$('cm').textContent=m+" min";
+}
+tick();setInterval(tick,30000);
+
+/* ===== navegação entre telas ===== */
+const ORDER=["home","confirmar","local","presentes"];
+const LABEL={confirmar:"Confirmar",local:"Localização",presentes:"Presentes"};
+let cur="home";
+document.querySelectorAll('[data-mini]').forEach(box=>{
+  ["confirmar","local","presentes"].forEach(k=>{
+    const b=document.createElement('button');b.type='button';b.textContent=LABEL[k];b.dataset.go=k;
+    if(box.dataset.mini===k)b.setAttribute('aria-current','true');
+    box.append(b);
+  });
+});
+function go(to){
+  if(to===cur)return;
+  const back=ORDER.indexOf(to)<ORDER.indexOf(cur)||to==="home";
+  document.querySelectorAll('.view').forEach(v=>{v.classList.remove('on','back');v.hidden=true;});
+  const v=$('v-'+to);v.hidden=false;v.classList.add('on');if(back)v.classList.add('back');
+  cur=to;
+  $('phone').scrollIntoView({block:'start',behavior:'auto'});
+  const h=v.querySelector('h1,h2');if(h){h.setAttribute('tabindex','-1');h.focus({preventScroll:true});}
+}
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go);});
+
+/* ===== RSVP ===== */
+if(EVENT.formUrl){
+  $('formLink').href=EVENT.formUrl;
+  $('linkCard').hidden=false;$('formCard').hidden=true;
+}
+function waLink(nome,resp){
+  const t=(resp==='sim'?`Oi! Aqui é ${nome}. Confirmo minha presença no ${EVENT.titulo} 🎉`:`Oi! Aqui é ${nome}. Infelizmente não poderei ir ao ${EVENT.titulo} 😢`);
+  return "https://wa.me/"+EVENT.whatsapp+"?text="+encodeURIComponent(t);
+}
+function formLink(nome,resp){
+  return EVENT.formBase+"?usp=pp_url&"+EVENT.formEntryNome+"="+encodeURIComponent(nome)+"&"+EVENT.formEntryResp+"="+encodeURIComponent(resp==='sim'?'Vou!':'Não posso');
+}
+function showDone(resp,nome,fresh){
+  $('formCard').hidden=true;$('done').hidden=false;$('done').classList.remove('hidden');
+  $('doneEmoji').textContent=resp==='sim'?'🌞':'💛';
+  $('doneTitle').textContent='Quase lá!';
+  $('doneText').textContent='Toque em "Concluir confirmação" e, na página que abrir, toque em Enviar. Sua confirmação só vale depois de enviar.';
+  $('waBtn').textContent='Concluir confirmação';
+  $('waBtn').classList.remove('wa');$('waBtn').classList.add('primary');
+  $('waBtn').href=formLink(nome||$('nome').value.trim(),resp);
+}
+$('edit').addEventListener('click',()=>{$('done').hidden=true;$('formCard').hidden=false;});
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();$('err').textContent='';
+  const nome=$('nome').value.trim(),resp=(document.querySelector('input[name=resp]:checked')||{}).value;
+  if(nome.length<2)return $('err').textContent='Digite seu nome.';
+  if(!resp)return $('err').textContent='Escolha se você vai ou não.';
+  $('send').disabled=true;
+  $('send').disabled=false;showDone(resp,nome,true);
+});
+function confete(){
+  const c=document.createElement('canvas');c.style.cssText='position:fixed;inset:0;z-index:9;pointer-events:none';
+  c.width=innerWidth;c.height=innerHeight;document.body.append(c);const x=c.getContext('2d');
+  const k=['#ffc857','#f4a04a','#9ed3ee','#9bc99a','#ffffff'];
+  const P=Array.from({length:120},()=>({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,s:Math.random()*7+3,c:k[Math.random()*5|0],l:90}));
+  (function f(){x.clearRect(0,0,c.width,c.height);let a=false;P.forEach(p=>{if(p.l>0){a=true;p.x+=p.vx;p.y+=p.vy;p.vy+=.35;p.l--;x.globalAlpha=p.l/90;x.fillStyle=p.c;x.beginPath();x.arc(p.x,p.y,p.s/2,0,6.3);x.fill();}});a?requestAnimationFrame(f):c.remove();})();
+}
+</script>
+</body>
+</html>
